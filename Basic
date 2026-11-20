@@ -6,3 +6,12 @@
  import java.awt.*;             //Point('util.List'와 중복주의 'awt.point'로 선언)
  import java.math.*;            //BigInteger
 
+•길이
+ 문자열(String) : length()
+ 배열(int[],Integer[],String[]) : length
+ 컬렉션(List) : size
+
+•입출력
+ 데이터 양이 적은경우
+ -입력 : Scanner
+ -출력 : System.out.print
