@@ -5,6 +5,7 @@
  import java.io.*;              //BufferedReader
  import java.awt.*;             //Point('util.List'와 중복주의 'awt.point'로 선언)
  import java.math.*;            //BigInteger
+ cf. util.*, awt.* 모두 List라는 클래스가 있기 때문에 좌표를 다룰때 Point를 쓰기위해 전체를 가져오는게 아닌 awt.point로 지정하여 import 하는것이 안전
 
 •길이
  문자열(String) : length()
@@ -12,6 +13,53 @@
  컬렉션(List) : size
 
 •입출력
- 데이터 양이 적은경우
+ 데이터 양이 적은 경우
  -입력 : Scanner
  -출력 : System.out.print
+ Scanner Sc = new Scanner(System.in);
+ String strLine = nextLine();
+ String str = sc.next();
+ int num1 = nextInt();
+ double num2 = sc.nextBoolean();
+ System.out.println(String.format("%d",3));
+
+ 데이터 양이 많은 경우
+ -입력 : BufferedReader
+ -출력 : BufferedWriter or StringBuilder
+  Buffered 입출력문 사용시, throws IOException 작성할것
+  BufferedReader로 공백 기준 입력시, StringTokenizer or split을 함께 운용할 것
+  cf. StringTokenizer -> BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  // Split보다 조금 더 빠르다
+                         StringTokenizer st = new StringTokenizer(br.readLine()):
+                         int a = Integer.parseInt(st.nextToken());
+                         int b = Integer.parseInt(st.nextToken());
+       Split          -> String[] arr = br.readLine().split(" ");   //코드가 더 직관적이다
+                         int a = Integer.parseInt(arr[0]);
+                         int b = Integer.parseInt(arr[1]);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bw = new BufferedReader(new outputStreamReader(System.out));
+
+        String inputLine = br.readLine();   //문자열로 읽고 출력하기
+        bw.write("입력받은 문자열: "+inputLine);
+        
+        int inputNum = Integer.parseInt(br.readLine());  //숫자로 읽고 출력할것 버퍼에 담기
+        bw.write("입력받은 숫자: "+inputNum);   //write의 파라미터는 반드시 String일것
+
+
+        //bw.flush(); 버퍼 비우기(버퍼에 쌓인 것들 출력)
+        br.close(); //flush포함됨
+        bw.close();
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
